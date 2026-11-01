@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- LECTURE TOPIC: AndroidManifest.xml - Permissions & Component Declarations -->
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <!-- 1. Network permissions for weather API & Firebase -->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
+    <!-- 2. Android 13+ (API 33) Runtime Notification Permission -->
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+
+    <!-- 3. Foreground Service permissions for Android 10+ and 14+ -->
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_SPECIAL_USE" />
+
+    <!-- 4. Contacts permission for System Content Provider (ContactsContract) -->
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
+
+    <!-- 5. Location permissions to auto-detect Bangladesh district -->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+
+    <!-- 6. Phone call permission (with fallback to ACTION_DIAL) -->
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+
+    <!-- 7. Boot completed receiver permission -->
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+
+    <application
+        android:allowBackup="true"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="@xml/backup_rules"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.LoadSheddingTracker">
+
+        <!-- 1. Splash Activity (Launcher Entry Point) -->
+        <activity
+            android:name=".activities.SplashActivity"
+            android:exported="true"
+            android:theme="@style/Theme.LoadSheddingTracker.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <!-- 2. Authentication Activities -->
+        <activity
+            android:name=".activities.LoginActivity"
+            android:exported="false"
+            android:theme="@style/Theme.LoadSheddingTracker.NoActionBar" />
+
+        <activity
+            android:name=".activities.RegisterActivity"
+            android:exported="false"
+            android:theme="@style/Theme.LoadSheddingTracker.NoActionBar" />
+
+        <!-- 3. Dashboard Activity -->
+        <activity
+            android:name=".activities.DashboardActivity"
+            android:exported="false"
+            android:label="Power Dashboard" />
+
+        <!-- Settings Activity -->
+        <activity
+            android:name=".activities.SettingsActivity"
+            android:exported="false"
+            android:label="Settings" />
+
+        <!-- 4. Select Area Activity (Simple ListView) -->
+        <activity
+            android:name=".activities.SelectAreaActivity"
+            android:exported="false"
+            android:label="Select District" />
+
+        <!-- 5. Schedule Activity (Custom ListView + TableLayout) -->
+        <activity
+            android:name=".activities.ScheduleActivity"
+            android:exported="false"
+            android:label="Outage Schedule" />
+
+        <!-- 6. Report Outage Activity (Firebase RTDB Save) -->
+        <activity
+            android:name=".activities.ReportOutageActivity"
+            android:exported="false"
+            android:label="Report Power Outage" />
+
+        <!-- 7. Live Community Reports Activity (Firebase RTDB Read) -->
+        <activity
+            android:name=".activities.LiveReportsActivity"
+            android:exported="false"
+            android:label="Live Community Reports" />
+
+        <!-- 8. Outage History Activity (Firestore Read + RecyclerView LayoutManager Toggle) -->
+        <activity
+            android:name=".activities.OutageHistoryActivity"
+            android:exported="false"
+            android:label="Outage History" />
+
+        <!-- 9. Log Outage Activity (Firestore Add + GridLayout) -->
+        <activity
+            android:name=".activities.LogOutageActivity"
+            android:exported="false"
+            android:label="Log Outage Incident" />
+
+        <!-- 10. Outage Detail Activity (Explicit Intent Extras & Update/Delete) -->
+        <activity
+            android:name=".activities.OutageDetailActivity"
+            android:exported="false"
+            android:label="Outage Details" />
+
+        <!-- 11. Permissions Activity (Runtime Permissions Checker) -->
+        <activity
+            android:name=".activities.PermissionsActivity"
+            android:exported="false"
+            android:label="Permissions Status" />
+
+        <!-- 12. Contact Picker Activity (System ContactsContract Provider) -->
+        <activity
+            android:name=".activities.ContactPickerActivity"
+            android:exported="false"
+            android:label="Alert Family Contact" />
+
+        <!-- 13. About Activity (Viva Syllabus Topic Map Table) -->
+        <activity
+            android:name=".activities.AboutActivity"
+            android:exported="false"
+            android:label="About &amp; Viva Topics" />
+
+        <!-- LECTURE TOPIC: Service Declaration with foregroundServiceType (Android 14 compliant) -->
+        <service
+            android:name=".services.OutageCountdownService"
+            android:exported="false"
+            android:foregroundServiceType="specialUse">
+            <property
+                android:name="android.app.PROPERTY_SPECIAL_USE_FGS_SUBTYPE"
+                android:value="Outage countdown timer and power cut notifications" />
+        </service>
+
+        <!-- LECTURE TOPIC: BroadcastReceiver Declaration (System Power & Battery Events) -->
+        <receiver
+            android:name=".receivers.PowerConnectionReceiver"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.ACTION_POWER_CONNECTED" />
+                <action android:name="android.intent.action.ACTION_POWER_DISCONNECTED" />
+                <action android:name="android.intent.action.BATTERY_LOW" />
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+            </intent-filter>
+        </receiver>
+
+        <!-- LECTURE TOPIC: Custom Content Provider Declaration -->
+        <provider
+            android:name=".providers.ScheduleContentProvider"
+            android:authorities="com.example.loadsheddingtracker.provider"
+            android:exported="false" />
+
+    </application>
+
+</manifest>

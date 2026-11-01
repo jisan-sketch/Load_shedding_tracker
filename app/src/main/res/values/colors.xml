@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- LECTURE TOPIC: Resources - Color Palette -->
+<!-- Professional Utility & Energy Design System Palette -->
+<resources>
+    <!-- Brand Primary Colors -->
+    <color name="primary">#1E3A8A</color>              <!-- Deep Cobalt / Electric Blue -->
+    <color name="primaryDark">#172554</color>          <!-- Midnight Navy -->
+    <color name="primaryLight">#DBEAFE</color>         <!-- Soft Ice Blue Tint -->
+    <color name="primary_variant">#172554</color>      <!-- Compatibility alias -->
+
+    <!-- Energy Accent / Warm Amber -->
+    <color name="accent">#F59E0B</color>               <!-- Amber Gold -->
+    <color name="accentLight">#FEF3C7</color>          <!-- Warm Amber Glow -->
+    <color name="warning">#F59E0B</color>              <!-- Warning Chip Color -->
+
+    <!-- Surfaces & Neutrals -->
+    <color name="background">#F5F7FB</color>           <!-- Clean modern light grey-blue background -->
+    <color name="surface">#FFFFFF</color>              <!-- Crisp pure white card surface -->
+    <color name="surfaceDark">#1E293B</color>          <!-- Dark slate surface for hero cards -->
+    <color name="surfaceVariant">#F1F5F9</color>       <!-- Light chip & container surface -->
+    <color name="divider">#E2E8F0</color>              <!-- Subtle border line -->
+    <color name="card_stroke">#E2E8F0</color>
+
+    <!-- Typography Colors (Always crisp & dark on light surfaces) -->
+    <color name="textPrimary">#0F172A</color>          <!-- High-contrast Jet Black for titles & input typing -->
+    <color name="textSecondary">#64748B</color>        <!-- Clean Slate Grey for subtitles & hints -->
+    <color name="textTertiary">#94A3B8</color>         <!-- Muted caption color -->
+    <color name="white">#FFFFFF</color>
+    <color name="black">#000000</color>
+
+    <!-- Semantic Status Colors -->
+    <color name="success">#16A34A</color>              <!-- Normal / Restored Green -->
+    <color name="success_bg">#DCFCE7</color>           <!-- Soft Green Chip -->
+    <color name="danger">#DC2626</color>               <!-- Outage / Ongoing Red -->
+    <color name="danger_bg">#FEE2E2</color>            <!-- Soft Red Chip -->
+    <color name="warning_bg">#FEF3C7</color>           <!-- Soft Amber Chip -->
+
+    <!-- Compatibility aliases for existing references -->
+    <color name="status_green">#16A34A</color>
+    <color name="status_red">#DC2626</color>
+    <color name="status_orange">#F59E0B</color>
+    <color name="text_primary">#0F172A</color>
+    <color name="text_secondary">#64748B</color>
+    <color name="text_hint">#94A3B8</color>
+    <color name="primary_dark">#172554</color>
+    <color name="primary_blue_accent">#2563EB</color>
+</resources>

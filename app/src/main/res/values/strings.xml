@@ -1,0 +1,71 @@
+<resources>
+    <!-- LECTURE TOPIC: Android Basics - String Resources -->
+    <string name="app_name">Load-shedding Tracker</string>
+    <string name="tagline">Electricity Outage Monitor for Bangladesh</string>
+    <string name="default_area">Khulna</string>
+
+    <!-- Authentication -->
+    <string name="login_title">Sign In</string>
+    <string name="register_title">Create Account</string>
+    <string name="email_hint">Email address</string>
+    <string name="password_hint">Password (min 6 characters)</string>
+    <string name="confirm_password_hint">Confirm password</string>
+    <string name="btn_login">Login</string>
+    <string name="btn_register">Register</string>
+    <string name="btn_forgot_password">Forgot Password?</string>
+    <string name="txt_need_account">Don\'t have an account? Register here</string>
+    <string name="txt_have_account">Already have an account? Sign in</string>
+    <string name="logout">Logout</string>
+
+    <!-- Dashboard -->
+    <string name="dashboard_title">Power Dashboard</string>
+    <string name="selected_area_label">Current Area:</string>
+    <string name="btn_change_area">Change Area</string>
+    <string name="weather_loading">Fetching weather data…</string>
+    <string name="network_status_online">Network: Online</string>
+    <string name="network_status_offline">Network: Offline (Check Wi-Fi/Data)</string>
+    <string name="next_outage_label">Next Scheduled Cut:</string>
+    <string name="countdown_stopped">Service stopped</string>
+    <string name="btn_start_service">Start Countdown Service</string>
+    <string name="btn_stop_service">Stop Countdown Service</string>
+    <string name="helpline_number">16999</string>
+    <string name="btn_call_helpline">Call Helpline (16999)</string>
+    <string name="btn_open_website">Power Co. Website</string>
+    <string name="btn_share_app">Share Outage Status</string>
+
+    <!-- Navigation / Features -->
+    <string name="nav_today_schedule">Today\'s Schedule</string>
+    <string name="nav_report_outage">Report Outage</string>
+    <string name="nav_live_reports">Community Reports</string>
+    <string name="nav_outage_history">Outage History</string>
+    <string name="nav_log_outage">Log Outage (Firestore)</string>
+    <string name="nav_permissions">Runtime Permissions</string>
+    <string name="nav_contact_alert">Alert Family Contact</string>
+    <string name="nav_about">About &amp; Viva Topic Map</string>
+
+    <!-- Schedule Screen -->
+    <string name="schedule_title">Load-shedding Schedule</string>
+    <string name="weekly_table_title">Weekly Area Schedule Matrix</string>
+
+    <!-- Outage Report -->
+    <string name="report_title">Report Power Cut</string>
+    <string name="report_cause_prompt">Select Cause</string>
+    <string name="report_desc_hint">Provide any additional details…</string>
+    <string name="btn_submit_report">Submit Live Report</string>
+
+    <!-- Outage History -->
+    <string name="history_title">Outage History (Firestore)</string>
+    <string name="btn_toggle_layout">Switch to Grid View</string>
+    <string name="btn_filter_area">Filter Current Area</string>
+
+    <!-- Permissions -->
+    <string name="permissions_title">Runtime Permissions State</string>
+    <string name="perm_notification_desc">Required on Android 13+ to send outage warnings and countdown updates.</string>
+    <string name="perm_contacts_desc">Required to pick family contacts to send load-shedding warning SMS/shares.</string>
+    <string name="perm_location_desc">Required to automatically suggest your current Bangladesh district/area.</string>
+    <string name="perm_call_desc">Optional direct call to national electricity helpline 16999 (fallback: DIAL intent).</string>
+
+    <!-- Notification channel -->
+    <string name="notification_channel_name">Load-shedding Alerts</string>
+    <string name="notification_channel_desc">Alerts for power outage countdowns and restoration</string>
+</resources>

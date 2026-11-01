@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- LECTURE TOPIC: Modern Material 3 Design System & Clean Typography -->
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <!-- Base Application Theme using Material 3 Light with NoActionBar -->
+    <style name="Theme.LoadSheddingTracker" parent="Theme.Material3.Light.NoActionBar">
+        <!-- Brand Colors -->
+        <item name="colorPrimary">@color/primary</item>
+        <item name="colorPrimaryDark">@color/primaryDark</item>
+        <item name="colorSecondary">@color/accent</item>
+        <item name="colorSurface">@color/surface</item>
+        <item name="android:windowBackground">@color/background</item>
+        <item name="android:statusBarColor">@color/primary</item>
+        <item name="android:windowLightStatusBar" tools:targetApi="m">false</item>
+
+        <!-- Global Inter Font Family (Forces clean modern typography app-wide) -->
+        <item name="fontFamily">@font/app_font</item>
+        <item name="android:fontFamily">@font/app_font</item>
+
+        <!-- High-Contrast Text Colors -->
+        <item name="android:textColor">@color/textPrimary</item>
+        <item name="android:textColorPrimary">@color/textPrimary</item>
+        <item name="android:textColorSecondary">@color/textSecondary</item>
+        <item name="android:textColorHint">@color/textSecondary</item>
+        <item name="android:editTextColor">@color/textPrimary</item>
+
+        <!-- Button default style -->
+        <item name="materialButtonStyle">@style/Widget.LoadShedding.Button.Primary</item>
+    </style>
+
+    <!-- Alias for NoActionBar (same clean theme) -->
+    <style name="Theme.LoadSheddingTracker.NoActionBar" parent="Theme.LoadSheddingTracker" />
+
+    <!-- ========================================================================= -->
+    <!-- BUTTON DESIGN SYSTEM: Strictly Three Styles -->
+    <!-- ========================================================================= -->
+
+    <!-- 1. Primary Button: Filled Deep Blue with 14dp Corner Radius -->
+    <style name="Widget.LoadShedding.Button.Primary" parent="Widget.Material3.Button">
+        <item name="backgroundTint">@color/primary</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="cornerRadius">14dp</item>
+        <item name="android:minHeight">50dp</item>
+        <item name="android:textSize">15sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="fontFamily">@font/app_font</item>
+        <item name="android:fontFamily">@font/app_font</item>
+        <item name="android:elevation">2dp</item>
+    </style>
+
+    <!-- 2. Secondary Button: Outlined Deep Blue with 14dp Corner Radius -->
+    <style name="Widget.LoadShedding.Button.Secondary" parent="Widget.Material3.Button.OutlinedButton">
+        <item name="strokeColor">@color/primary</item>
+        <item name="strokeWidth">1.5dp</item>
+        <item name="android:textColor">@color/primary</item>
+        <item name="cornerRadius">14dp</item>
+        <item name="android:minHeight">50dp</item>
+        <item name="android:textSize">15sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="fontFamily">@font/app_font</item>
+        <item name="android:fontFamily">@font/app_font</item>
+    </style>
+
+    <!-- 3. Danger Button: Outlined Red with 14dp Corner Radius -->
+    <style name="Widget.LoadShedding.Button.Danger" parent="Widget.Material3.Button.OutlinedButton">
+        <item name="strokeColor">@color/danger</item>
+        <item name="strokeWidth">1.5dp</item>
+        <item name="android:textColor">@color/danger</item>
+        <item name="cornerRadius">14dp</item>
+        <item name="android:minHeight">48dp</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="fontFamily">@font/app_font</item>
+        <item name="android:fontFamily">@font/app_font</item>
+    </style>
+
+    <!-- ========================================================================= -->
+    <!-- INPUT DESIGN SYSTEM: Outlined Material 3 TextInput -->
+    <!-- ========================================================================= -->
+    <style name="Widget.LoadShedding.TextInputLayout" parent="Widget.Material3.TextInputLayout.OutlinedBox">
+        <item name="boxStrokeColor">@color/primary</item>
+        <item name="boxStrokeWidth">1.5dp</item>
+        <item name="boxCornerRadiusTopStart">14dp</item>
+        <item name="boxCornerRadiusTopEnd">14dp</item>
+        <item name="boxCornerRadiusBottomStart">14dp</item>
+        <item name="boxCornerRadiusBottomEnd">14dp</item>
+        <item name="hintTextColor">@color/primary</item>
+        <item name="android:textColorHint">@color/textSecondary</item>
+        <item name="boxBackgroundColor">@color/white</item>
+        <item name="startIconTint">@color/primary</item>
+        <item name="endIconTint">@color/textSecondary</item>
+    </style>
+
+</resources>
