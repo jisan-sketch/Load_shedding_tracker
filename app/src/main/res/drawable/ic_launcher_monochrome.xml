@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Adaptive Icon Monochrome: Power Grid Shield with Lightning Bolt (Android 13+ Themed Icons) -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+
+    <!-- Stylized Power Grid Shield Circle (Centered at 54, 54, diameter ~56dp, inside 66dp safe zone) -->
+    <path
+        android:strokeColor="#FFFFFF"
+        android:strokeWidth="2.5"
+        android:pathData="M54,26 C69.46,26 82,38.54 82,54 C82,69.46 69.46,82 54,82 C38.54,82 26,69.46 26,54 C26,38.54 38.54,26 54,26 Z" />
+
+    <!-- Power Prongs / Grid Notches -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M44,22h4v6h-4z M60,22h4v6h-4z" />
+
+    <!-- Pure White Lightning Bolt for dynamic theme tinting -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M56,32 L40,56 L52,56 L48,76 L68,48 L56,48 Z" />
+</vector>
+
