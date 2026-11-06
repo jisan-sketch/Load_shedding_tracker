@@ -1,0 +1,840 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- LAYOUT TYPE: RelativeLayout (Root and Containers built strictly using RelativeLayout attributes) -->
+<!-- LECTURE TOPIC: RelativeLayout (alignParentTop, alignParentBottom, alignParentStart, alignParentEnd, layout_below) -->
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background">
+
+    <!-- ========================================================================= -->
+    <!-- 1. SCROLLABLE DASHBOARD BODY (Above Bottom Navigation Bar)                -->
+    <!-- ========================================================================= -->
+    <ScrollView
+        android:id="@+id/dashboard_scroll_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentTop="true"
+        android:layout_above="@id/bottom_nav_bar"
+        android:fillViewport="true"
+        android:scrollbars="none">
+
+        <!-- RelativeLayout Container inside ScrollView for lecture positioning rules -->
+        <RelativeLayout
+            android:id="@+id/rl_dashboard_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <!-- A. MODERN CURVED HERO HEADER (Gradient Blue with 28dp corners) -->
+            <RelativeLayout
+                android:id="@+id/header_container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentEnd="true"
+                android:background="@drawable/bg_dashboard_header"
+                android:paddingTop="20dp"
+                android:paddingBottom="52dp"
+                android:paddingStart="20dp"
+                android:paddingEnd="20dp">
+
+                <!-- Top Row: Greeting & Subtitle (Left) + Network & Settings (Right) -->
+                <LinearLayout
+                    android:id="@+id/ll_top_meta_row"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical">
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/tv_dash_greeting"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Hello, Student"
+                            android:textColor="@color/white"
+                            android:textSize="22sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/tv_dash_user_email"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="user@example.com"
+                            android:textColor="#93C5FD"
+                            android:textSize="12sp"
+                            android:layout_marginTop="2dp"
+                            android:maxLines="1"
+                            android:ellipsize="end" />
+                    </LinearLayout>
+
+                    <!-- Network Status Pill (Tiny colored dot + status text) -->
+                    <LinearLayout
+                        android:id="@+id/ll_network_pill"
+                        android:layout_width="wrap_content"
+                        android:layout_height="32dp"
+                        android:background="@drawable/bg_weather_pill"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical"
+                        android:paddingHorizontal="10dp"
+                        android:layout_marginEnd="8dp">
+
+                        <View
+                            android:id="@+id/view_network_dot"
+                            android:layout_width="8dp"
+                            android:layout_height="8dp"
+                            android:background="@drawable/bg_network_dot_online" />
+
+                        <TextView
+                            android:id="@+id/tv_network_status"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Online"
+                            android:textColor="@color/white"
+                            android:textSize="12sp"
+                            android:textStyle="bold"
+                            android:layout_marginStart="6dp" />
+                    </LinearLayout>
+
+                    <!-- Settings Gear Icon -->
+                    <ImageButton
+                        android:id="@+id/btn_dash_settings"
+                        android:layout_width="38dp"
+                        android:layout_height="38dp"
+                        android:background="@drawable/bg_weather_pill"
+                        android:src="@drawable/ic_settings"
+                        android:padding="8dp"
+                        android:contentDescription="Settings" />
+
+                    <!-- Logout Icon Button -->
+                    <ImageButton
+                        android:id="@+id/btn_dash_logout"
+                        android:layout_width="38dp"
+                        android:layout_height="38dp"
+                        android:background="@drawable/bg_weather_pill"
+                        android:src="@drawable/ic_logout"
+                        android:padding="8dp"
+                        android:layout_marginStart="8dp"
+                        app:tint="#FCA5A5"
+                        android:contentDescription="Logout" />
+                </LinearLayout>
+
+                <!-- Middle: Area Chip (Location Pin + Area Name + "Change" Link) -->
+                <LinearLayout
+                    android:id="@+id/layout_area_chip"
+                    android:layout_width="wrap_content"
+                    android:layout_height="36dp"
+                    android:layout_below="@id/ll_top_meta_row"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginTop="16dp"
+                    android:background="@drawable/bg_area_chip"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:paddingHorizontal="12dp">
+
+                    <ImageView
+                        android:layout_width="16dp"
+                        android:layout_height="16dp"
+                        android:src="@drawable/ic_location_pin"
+                        android:contentDescription="Location"
+                        app:tint="@color/accent" />
+
+                    <TextView
+                        android:id="@+id/tv_current_area"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Khulna"
+                        android:textColor="@color/white"
+                        android:textSize="14sp"
+                        android:textStyle="bold"
+                        android:layout_marginStart="6dp" />
+
+                    <View
+                        android:layout_width="1dp"
+                        android:layout_height="14dp"
+                        android:background="#40FFFFFF"
+                        android:layout_marginHorizontal="8dp" />
+
+                    <!-- Button to trigger ActivityResultLauncher for selecting area -->
+                    <TextView
+                        android:id="@+id/btn_change_area"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Change"
+                        android:textColor="@color/accent"
+                        android:textSize="13sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <!-- Weather Mini-Pill with Refresh Icon Button -->
+                <LinearLayout
+                    android:id="@+id/layout_weather_pill"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/layout_area_chip"
+                    android:layout_marginTop="12dp"
+                    android:background="@drawable/bg_weather_pill"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:paddingVertical="8dp"
+                    android:paddingHorizontal="14dp">
+
+                    <TextView
+                        android:id="@+id/tv_weather_info"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Fetching weather for Khulna…"
+                        android:textColor="#E0F2FE"
+                        android:textSize="13sp"
+                        android:maxLines="1"
+                        android:ellipsize="end" />
+
+                    <ImageButton
+                        android:id="@+id/btn_refresh_weather"
+                        android:layout_width="28dp"
+                        android:layout_height="28dp"
+                        android:background="?attr/selectableItemBackgroundBorderless"
+                        android:src="@drawable/ic_refresh"
+                        android:padding="4dp"
+                        android:contentDescription="Refresh weather" />
+                </LinearLayout>
+
+            </RelativeLayout>
+
+            <!-- B. BIG HERO OVERLAPPING CARD: Next Power Cut and Countdown Service -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/card_next_outage"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/header_container"
+                android:layout_marginTop="-36dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                app:cardCornerRadius="20dp"
+                app:cardElevation="4dp"
+                app:strokeWidth="1dp"
+                app:strokeColor="@color/divider"
+                app:cardBackgroundColor="@color/surface">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="20dp">
+
+                    <!-- Status Label & Outage Badge -->
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:id="@+id/lbl_countdown_title"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentStart="true"
+                            android:text="NEXT SCHEDULED POWER CUT"
+                            android:textSize="11sp"
+                            android:textStyle="bold"
+                            android:textColor="@color/textSecondary"
+                            android:letterSpacing="0.08" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentEnd="true"
+                            android:background="@drawable/bg_circle_icon_amber"
+                            android:text="Scheduled"
+                            android:textColor="#D97706"
+                            android:textSize="11sp"
+                            android:textStyle="bold"
+                            android:paddingHorizontal="10dp"
+                            android:paddingVertical="3dp" />
+                    </RelativeLayout>
+
+                    <!-- Large Countdown Timer (32sp Bold) -->
+                    <TextView
+                        android:id="@+id/tv_countdown_timer"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="00:45:00"
+                        android:textSize="32sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/textPrimary"
+                        android:layout_marginTop="8dp" />
+
+                    <!-- Outage Time Window -->
+                    <TextView
+                        android:id="@+id/tv_cut_window"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Expected outage: 04:00 PM – 05:00 PM"
+                        android:textSize="13sp"
+                        android:textColor="@color/textSecondary"
+                        android:layout_marginTop="2dp" />
+
+                    <!-- Countdown Progress Bar -->
+                    <com.google.android.material.progressindicator.LinearProgressIndicator
+                        android:id="@+id/progress_countdown"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="14dp"
+                        android:progress="65"
+                        app:trackCornerRadius="4dp"
+                        app:trackThickness="6dp"
+                        app:indicatorColor="@color/accent"
+                        app:trackColor="#FEF3C7" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/divider"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginBottom="12dp" />
+
+                    <!-- Service Control Toggle (Replaces START / STOP service buttons) -->
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentStart="true"
+                            android:layout_toStartOf="@id/switch_countdown_service"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Alert me before power cuts"
+                                android:textSize="14sp"
+                                android:textStyle="bold"
+                                android:textColor="@color/textPrimary" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Foreground service countdown notification"
+                                android:textSize="12sp"
+                                android:textColor="@color/textSecondary"
+                                android:layout_marginTop="1dp" />
+                        </LinearLayout>
+
+                        <androidx.appcompat.widget.SwitchCompat
+                            android:id="@+id/switch_countdown_service"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentEnd="true"
+                            android:layout_centerVertical="true" />
+                    </RelativeLayout>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- C. QUICK ACTIONS SECTION: 2-COLUMN GRID OF MODERN CARDS -->
+            <TextView
+                android:id="@+id/lbl_quick_actions"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/card_next_outage"
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="24dp"
+                android:text="QUICK ACTIONS"
+                android:textSize="12sp"
+                android:textStyle="bold"
+                android:textColor="@color/textSecondary"
+                android:letterSpacing="0.06" />
+
+            <!-- Row 1: Today's Schedule & Report Outage -->
+            <LinearLayout
+                android:id="@+id/ll_grid_row_1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/lbl_quick_actions"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
+
+                <!-- 1. Schedule Card (Custom ListView) -->
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/card_nav_schedule"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginEnd="6dp"
+                    app:cardCornerRadius="20dp"
+                    app:cardElevation="2dp"
+                    app:strokeWidth="1dp"
+                    app:strokeColor="@color/divider"
+                    app:cardBackgroundColor="@color/surface"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:foreground="?attr/selectableItemBackground">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="16dp">
+
+                        <ImageView
+                            android:layout_width="42dp"
+                            android:layout_height="42dp"
+                            android:src="@drawable/ic_schedule_card"
+                            android:background="@drawable/bg_circle_icon_blue"
+                            android:padding="9dp"
+                            android:contentDescription="Schedule" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Schedule"
+                            android:textSize="16sp"
+                            android:textStyle="bold"
+                            android:textColor="@color/textPrimary"
+                            android:layout_marginTop="12dp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Daily cut timetable"
+                            android:textSize="12sp"
+                            android:textColor="@color/textSecondary"
+                            android:layout_marginTop="2dp" />
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+                <!-- 2. Report Outage Card (Firebase RTDB Write) -->
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/card_nav_report"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginStart="6dp"
+                    app:cardCornerRadius="20dp"
+                    app:cardElevation="2dp"
+                    app:strokeWidth="1dp"
+                    app:strokeColor="@color/divider"
+                    app:cardBackgroundColor="@color/surface"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:foreground="?attr/selectableItemBackground">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="16dp">
+
+                        <ImageView
+                            android:layout_width="42dp"
+                            android:layout_height="42dp"
+                            android:src="@drawable/ic_report_card"
+                            android:background="@drawable/bg_circle_icon_red"
+                            android:padding="9dp"
+                            android:contentDescription="Report Outage" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Report Cut"
+                            android:textSize="16sp"
+                            android:textStyle="bold"
+                            android:textColor="@color/textPrimary"
+                            android:layout_marginTop="12dp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Submit live power cut"
+                            android:textSize="12sp"
+                            android:textColor="@color/textSecondary"
+                            android:layout_marginTop="2dp" />
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+            </LinearLayout>
+
+            <!-- Row 2: Community Feed & Outage History -->
+            <LinearLayout
+                android:id="@+id/ll_grid_row_2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/ll_grid_row_1"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginTop="12dp"
+                android:orientation="horizontal">
+
+                <!-- 3. Community Feed Card (Firebase RTDB Read) -->
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/card_nav_live_reports"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginEnd="6dp"
+                    app:cardCornerRadius="20dp"
+                    app:cardElevation="2dp"
+                    app:strokeWidth="1dp"
+                    app:strokeColor="@color/divider"
+                    app:cardBackgroundColor="@color/surface"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:foreground="?attr/selectableItemBackground">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="16dp">
+
+                        <ImageView
+                            android:layout_width="42dp"
+                            android:layout_height="42dp"
+                            android:src="@drawable/ic_community_card"
+                            android:background="@drawable/bg_circle_icon_blue"
+                            android:padding="9dp"
+                            android:contentDescription="Community Feed" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Community"
+                            android:textSize="16sp"
+                            android:textStyle="bold"
+                            android:textColor="@color/textPrimary"
+                            android:layout_marginTop="12dp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Live citizen reports"
+                            android:textSize="12sp"
+                            android:textColor="@color/textSecondary"
+                            android:layout_marginTop="2dp" />
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+                <!-- 4. Outage History Card (Cloud Firestore + RecyclerView) -->
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/card_nav_history"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginStart="6dp"
+                    app:cardCornerRadius="20dp"
+                    app:cardElevation="2dp"
+                    app:strokeWidth="1dp"
+                    app:strokeColor="@color/divider"
+                    app:cardBackgroundColor="@color/surface"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:foreground="?attr/selectableItemBackground">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="16dp">
+
+                        <ImageView
+                            android:layout_width="42dp"
+                            android:layout_height="42dp"
+                            android:src="@drawable/ic_history_card"
+                            android:background="@drawable/bg_circle_icon_purple"
+                            android:padding="9dp"
+                            android:contentDescription="Outage History" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="History"
+                            android:textSize="16sp"
+                            android:textStyle="bold"
+                            android:textColor="@color/textPrimary"
+                            android:layout_marginTop="12dp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Past logs &amp; patterns"
+                            android:textSize="12sp"
+                            android:textColor="@color/textSecondary"
+                            android:layout_marginTop="2dp" />
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+            </LinearLayout>
+
+            <!-- Row 3: Call Helpline 16999 & Share Schedule -->
+            <LinearLayout
+                android:id="@+id/ll_grid_row_3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/ll_grid_row_2"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginTop="12dp"
+                android:layout_marginBottom="28dp"
+                android:orientation="horizontal">
+
+                <!-- 5. Helpline Card (Implicit Intent ACTION_DIAL) -->
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/card_call_helpline"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginEnd="6dp"
+                    app:cardCornerRadius="20dp"
+                    app:cardElevation="2dp"
+                    app:strokeWidth="1dp"
+                    app:strokeColor="@color/divider"
+                    app:cardBackgroundColor="@color/surface"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:foreground="?attr/selectableItemBackground">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="16dp">
+
+                        <ImageView
+                            android:layout_width="42dp"
+                            android:layout_height="42dp"
+                            android:src="@drawable/ic_call_card"
+                            android:background="@drawable/bg_circle_icon_green"
+                            android:padding="9dp"
+                            android:contentDescription="Call Helpline" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Helpline 16999"
+                            android:textSize="16sp"
+                            android:textStyle="bold"
+                            android:textColor="@color/textPrimary"
+                            android:layout_marginTop="12dp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Emergency power desk"
+                            android:textSize="12sp"
+                            android:textColor="@color/textSecondary"
+                            android:layout_marginTop="2dp" />
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+                <!-- 6. Share Alerts Card (LECTURE REQUIREMENT: android:onClick in XML) -->
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/card_share_status"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginStart="6dp"
+                    app:cardCornerRadius="20dp"
+                    app:cardElevation="2dp"
+                    app:strokeWidth="1dp"
+                    app:strokeColor="@color/divider"
+                    app:cardBackgroundColor="@color/surface"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:foreground="?attr/selectableItemBackground"
+                    android:onClick="onXmlShareStatusClick">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="16dp">
+
+                        <ImageView
+                            android:layout_width="42dp"
+                            android:layout_height="42dp"
+                            android:src="@drawable/ic_share_card"
+                            android:background="@drawable/bg_circle_icon_blue"
+                            android:padding="9dp"
+                            android:contentDescription="Share Schedule" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Share Alert"
+                            android:textSize="16sp"
+                            android:textStyle="bold"
+                            android:textColor="@color/textPrimary"
+                            android:layout_marginTop="12dp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Notify friends &amp; family"
+                            android:textSize="12sp"
+                            android:textColor="@color/textSecondary"
+                            android:layout_marginTop="2dp" />
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+            </LinearLayout>
+
+        </RelativeLayout>
+    </ScrollView>
+
+    <!-- ========================================================================= -->
+    <!-- 2. MODERN BOTTOM NAVIGATION BAR (Pinned to bottom of RelativeLayout)      -->
+    <!-- ========================================================================= -->
+    <LinearLayout
+        android:id="@+id/bottom_nav_bar"
+        android:layout_width="match_parent"
+        android:layout_height="64dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:background="@color/surface"
+        android:elevation="8dp"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:baselineAligned="false">
+
+        <!-- Tab 1: Home (Active) -->
+        <LinearLayout
+            android:id="@+id/nav_tab_home"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:background="?attr/selectableItemBackground">
+
+            <ImageView
+                android:layout_width="22dp"
+                android:layout_height="22dp"
+                android:src="@drawable/ic_home_nav"
+                app:tint="@color/primary"
+                android:contentDescription="Home" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Home"
+                android:textSize="11sp"
+                android:textStyle="bold"
+                android:textColor="@color/primary"
+                android:layout_marginTop="2dp" />
+        </LinearLayout>
+
+        <!-- Tab 2: Schedule -->
+        <LinearLayout
+            android:id="@+id/nav_tab_schedule"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:background="?attr/selectableItemBackground">
+
+            <ImageView
+                android:layout_width="22dp"
+                android:layout_height="22dp"
+                android:src="@drawable/ic_schedule_card"
+                app:tint="@color/textSecondary"
+                android:contentDescription="Schedule" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Schedule"
+                android:textSize="11sp"
+                android:textColor="@color/textSecondary"
+                android:layout_marginTop="2dp" />
+        </LinearLayout>
+
+        <!-- Tab 3: Report Outage -->
+        <LinearLayout
+            android:id="@+id/nav_tab_report"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:background="?attr/selectableItemBackground">
+
+            <ImageView
+                android:layout_width="22dp"
+                android:layout_height="22dp"
+                android:src="@drawable/ic_report_card"
+                app:tint="@color/textSecondary"
+                android:contentDescription="Report" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Report"
+                android:textSize="11sp"
+                android:textColor="@color/textSecondary"
+                android:layout_marginTop="2dp" />
+        </LinearLayout>
+
+        <!-- Tab 4: History -->
+        <LinearLayout
+            android:id="@+id/nav_tab_history"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:background="?attr/selectableItemBackground">
+
+            <ImageView
+                android:layout_width="22dp"
+                android:layout_height="22dp"
+                android:src="@drawable/ic_history_card"
+                app:tint="@color/textSecondary"
+                android:contentDescription="History" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="History"
+                android:textSize="11sp"
+                android:textColor="@color/textSecondary"
+                android:layout_marginTop="2dp" />
+        </LinearLayout>
+
+        <!-- Tab 5: Settings -->
+        <LinearLayout
+            android:id="@+id/nav_tab_settings"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:background="?attr/selectableItemBackground">
+
+            <ImageView
+                android:layout_width="22dp"
+                android:layout_height="22dp"
+                android:src="@drawable/ic_settings"
+                app:tint="@color/textSecondary"
+                android:contentDescription="Settings" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Settings"
+                android:textSize="11sp"
+                android:textColor="@color/textSecondary"
+                android:layout_marginTop="2dp" />
+        </LinearLayout>
+    </LinearLayout>
+
+</RelativeLayout>
