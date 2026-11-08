@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- LAYOUT TYPE: TableLayout inside ScrollView (Structured Viva Topic Map Matrix) -->
+<!-- LECTURE TOPIC: TableLayout & Viva Topic Coverage Reference -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/background">
+
+    <!-- Modern Header Bar -->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="64dp"
+        android:background="@color/primary"
+        android:paddingHorizontal="16dp">
+
+        <ImageButton
+            android:id="@+id/btn_about_back"
+            android:layout_width="44dp"
+            android:layout_height="44dp"
+            android:layout_centerVertical="true"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:src="@drawable/ic_arrow_back"
+            android:contentDescription="Back" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toEndOf="@id/btn_about_back"
+            android:layout_marginStart="12dp"
+            android:text="About &amp; Viva Map"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+    </RelativeLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="CSE 2200 Viva Topic Coverage Map"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:textColor="@color/textPrimary" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Load-shedding Tracker: Complete Lecture &amp; Lab Architecture"
+                android:textSize="12sp"
+                android:textColor="@color/textSecondary"
+                android:layout_marginTop="2dp"
+                android:layout_marginBottom="14dp" />
+
+            <!-- Comprehensive TableLayout showing each of the topics inside modern card -->
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="20dp"
+                app:cardElevation="2dp"
+                app:strokeWidth="1dp"
+                app:strokeColor="@color/divider"
+                app:cardBackgroundColor="@color/surface"
+                android:layout_marginBottom="24dp">
+
+                <TableLayout
+                    android:id="@+id/table_topic_map"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:stretchColumns="0,1"
+                    android:padding="8dp">
+
+                    <TableRow
+                        android:background="#FEF3C7"
+                        android:padding="10dp">
+                        <TextView android:text="Lecture / Lab Topic" android:textStyle="bold" android:textColor="@color/textPrimary" />
+                        <TextView android:text="Implementation in App" android:textStyle="bold" android:textColor="@color/textPrimary" />
+                    </TableRow>
+
+                    <TableRow android:padding="10dp">
+                        <TextView android:text="1. Folder Structure" android:textStyle="bold" android:textColor="@color/textPrimary" />
+                        <TextView android:text="Clean packages: activities, adapters, models, services, receivers, providers, utils" android:textColor="@color/textSecondary" />
+                    </TableRow>
+
+                    <TableRow android:padding="10dp" android:background="#F8FAFC">
+                        <TextView android:text="2. Button Clicks (3 ways)" android:textStyle="bold" android:textColor="@color/textPrimary" />
+                        <TextView android:text="(a) android:onClick in XML, (b) lambda in Java, (c) View.OnClickListener anonymous class" android:textColor="@color/textSecondary" />
+                    </TableRow>
+
+                    <TableRow android:padding="10dp">
+                        <TextView android:text="3. RelativeLayout" android:textStyle="bold" android:textColor="@color/textPrimary" />
+                        <TextView android:text="DashboardActivity root and containers built with layout_below, alignParentEnd, etc." android:textColor="@color/textSecondary" />
+                    </TableRow>
+
+                    <TableRow android:padding="10dp" android:background="#F8FAFC">
+                        <TextView android:text="4. ConstraintLayout" android:textStyle="bold" android:textColor="@color/textPrimary" />
+                        <TextView android:text="LoginActivity and RegisterActivity built with constraints, chains and guidelines" android:textColor="@color/textSecondary" />
+                    </TableRow>
+
+                    <TableRow android:padding="10dp">
+                        <TextView android:text="5. Layout Variety" android:textStyle="bold" android:textColor="@color/textPrimary" />
+                        <TextView android:text="LinearLayout (horizontal/vertical), FrameLayout, TableLayout, GridLayout in screens" android:textColor="@color/textSecondary" />
+                    </TableRow>
+
+                    <TableRow android:padding="10dp" android:background="#F8FAFC">
+                        <TextView android:text="6. Activity Lifecycle" android:textStyle="bold" android:textColor="@color/textPrimary" />
+                        <TextView android:text="All 7 methods overridden (onCreate..onDestroy) + onSaveInstanceState logged to Logcat" android:textColor="@color/textSecondary" />
+                    </TableRow>
+
+                    <TableRow android:padding="10dp">
+                        <TextView android:text="7. Intents (Explicit/Implicit)" android:textStyle="bold" android:textColor="@color/textPrimary" />
+                        <TextView android:text="Explicit intents with putExtra; Implicit: ACTION_DIAL (16999), ACTION_VIEW, ACTION_SEND" android:textColor="@color/textSecondary" />
+                    </TableRow>
+
+                    <TableRow android:padding="10dp" android:background="#F8FAFC">
+                        <TextView android:text="8. Simple ListView" android:textStyle="bold" android:textColor="@color/textPrimary" />
+                        <TextView android:text="SelectAreaActivity: ArrayAdapter with android.R.layout.simple_list_item_1 and ActivityResult" android:textColor="@color/textSecondary" />
+                    </TableRow>
+
+                    <TableRow android:padding="10dp">
+                        <TextView android:text="9. Custom ListView" android:textStyle="bold" android:textColor="@color/textPrimary" />
+                        <TextView android:text="ScheduleActivity: ScheduleAdapter with convertView reuse and ViewHolder pattern" android:textColor="@color/textSecondary" />
+                    </TableRow>
+
+                    <TableRow android:padding="10dp" android:background="#F8FAFC">
+                        <TextView android:text="10. RecyclerView" android:textStyle="bold" android:textColor="@color/textPrimary" />
+                        <TextView android:text="OutageHistoryActivity: OutageRecyclerAdapter with ViewHolder and click listeners" android:textColor="@color/textSecondary" />
+                    </TableRow>
+
+                    <TableRow android:padding="10dp">
+                        <TextView android:text="11. LayoutManager Toggle" android:textStyle="bold" android:textColor="@color/textPrimary" />
+                        <TextView android:text="Runtime switch between LinearLayoutManager and GridLayoutManager (2 columns)" android:textColor="@color/textSecondary" />
+                    </TableRow>
+
+                    <TableRow android:padding="10dp" android:background="#F8FAFC">
+                        <TextView android:text="12. Service (Started/Foreground)" android:textStyle="bold" android:textColor="@color/textPrimary" />
+                        <TextView android:text="OutageCountdownService: Foreground service with persistent countdown notification" android:textColor="@color/textSecondary" />
+                    </TableRow>
+
+                    <TableRow android:padding="10dp">
+                        <TextView android:text="13. Notifications" android:textStyle="bold" android:textColor="@color/textPrimary" />
+                        <TextView android:text="NotificationChannel, NotificationCompat, PendingIntent with FLAG_IMMUTABLE, POST_NOTIFICATIONS" android:textColor="@color/textSecondary" />
+                    </TableRow>
+
+                    <TableRow android:padding="10dp" android:background="#F8FAFC">
+                        <TextView android:text="14. BroadcastReceivers" android:textStyle="bold" android:textColor="@color/textPrimary" />
+                        <TextView android:text="Static (BootReceiver in manifest) and Dynamic (NetworkChangeReceiver &amp; countdown tick)" android:textColor="@color/textSecondary" />
+                    </TableRow>
+
+                    <TableRow android:padding="10dp">
+                        <TextView android:text="15. Runtime Permissions" android:textStyle="bold" android:textColor="@color/textPrimary" />
+                        <TextView android:text="ActivityResultContracts.RequestMultiplePermissions with rationale dialogs" android:textColor="@color/textSecondary" />
+                    </TableRow>
+
+                    <TableRow android:padding="10dp" android:background="#F8FAFC">
+                        <TextView android:text="16. Custom ContentProvider" android:textStyle="bold" android:textColor="@color/textPrimary" />
+                        <TextView android:text="ScheduleContentProvider backed by SQLite OpenHelper (query, insert, update, delete)" android:textColor="@color/textSecondary" />
+                    </TableRow>
+
+                    <TableRow android:padding="10dp">
+                        <TextView android:text="17. System ContentProvider" android:textStyle="bold" android:textColor="@color/textPrimary" />
+                        <TextView android:text="ContactPickerActivity querying ContactsContract.CommonDataKinds.Phone" android:textColor="@color/textSecondary" />
+                    </TableRow>
+
+                    <TableRow android:padding="10dp" android:background="#F8FAFC">
+                        <TextView android:text="18. HTTP HttpURLConnection" android:textStyle="bold" android:textColor="@color/textPrimary" />
+                        <TextView android:text="WeatherHttpUtil fetches live weather asynchronously on background thread" android:textColor="@color/textSecondary" />
+                    </TableRow>
+
+                    <TableRow android:padding="10dp">
+                        <TextView android:text="19. Firebase Authentication" android:textStyle="bold" android:textColor="@color/textPrimary" />
+                        <TextView android:text="Email/password register, login, sign out and session persistence" android:textColor="@color/textSecondary" />
+                    </TableRow>
+
+                    <TableRow android:padding="10dp" android:background="#F8FAFC">
+                        <TextView android:text="20. Firebase Realtime Database" android:textStyle="bold" android:textColor="@color/textPrimary" />
+                        <TextView android:text="Write live reports with push().setValue(), read with addValueEventListener" android:textColor="@color/textSecondary" />
+                    </TableRow>
+
+                    <TableRow android:padding="10dp">
+                        <TextView android:text="21. Cloud Firestore" android:textStyle="bold" android:textColor="@color/textPrimary" />
+                        <TextView android:text="Document add, query, real-time snapshot listener, document update and delete" android:textColor="@color/textSecondary" />
+                    </TableRow>
+                </TableLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>
