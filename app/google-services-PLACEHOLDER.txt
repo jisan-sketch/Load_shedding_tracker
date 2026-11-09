@@ -1,0 +1,9 @@
+GOOGLE-SERVICES.JSON PLACEHOLDER NOTE
+======================================
+As instructed in the project requirements and FIREBASE_SETUP.md:
+1. Do not commit a fake google-services.json file here.
+2. Download your authentic 'google-services.json' from your Firebase Console (package: com.example.loadsheddingtracker).
+3. Place 'google-services.json' right inside this 'app/' folder (e.g., E:\2_2\my_android_project\app\google-services.json).
+4. Gradle's build script automatically checks for the existence of 'google-services.json' and conditionally applies the Google Services plugin without requiring manual script edits.
+5. In the meantime, the application runs gracefully in Offline Demo Mode without crashing!
+
