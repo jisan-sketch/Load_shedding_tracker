@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- LAYOUT TYPE: LinearLayout (Vertical linear container with modern header, RecyclerView and Empty State) -->
+<!-- LECTURE TOPIC: Firebase Realtime Database - Retrieve Data (addValueEventListener) -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/background">
+
+    <!-- Modern Header Bar -->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="64dp"
+        android:background="@color/primary"
+        android:paddingHorizontal="16dp">
+
+        <ImageButton
+            android:id="@+id/btn_live_reports_back"
+            android:layout_width="44dp"
+            android:layout_height="44dp"
+            android:layout_centerVertical="true"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:src="@drawable/ic_arrow_back"
+            android:contentDescription="Back" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toEndOf="@id/btn_live_reports_back"
+            android:layout_marginStart="12dp"
+            android:text="Community Outages"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <TextView
+            android:id="@+id/tv_live_subtitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Real-time crowd reports synced via Firebase RTDB"
+            android:textSize="12sp"
+            android:textColor="@color/textSecondary"
+            android:layout_marginBottom="12dp"
+            android:layout_marginStart="4dp" />
+
+        <ProgressBar
+            android:id="@+id/pb_live_reports"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:indeterminateTint="@color/primary"
+            android:layout_marginTop="24dp" />
+
+        <LinearLayout
+            android:id="@+id/layout_empty_reports"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:visibility="gone"
+            android:layout_marginTop="60dp">
+
+            <ImageView
+                android:layout_width="64dp"
+                android:layout_height="64dp"
+                android:src="@drawable/ic_community_card"
+                android:background="@drawable/bg_circle_icon_blue"
+                android:padding="14dp"
+                android:contentDescription="No reports" />
+
+            <TextView
+                android:id="@+id/tv_empty_reports"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="No live community reports found.\nTap Report Outage on the dashboard to post one!"
+                android:gravity="center"
+                android:textSize="14sp"
+                android:textColor="@color/textSecondary"
+                android:layout_marginTop="16dp" />
+        </LinearLayout>
+
+        <!-- RecyclerView for live community outage reports -->
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_live_reports"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:clipToPadding="false" />
+
+    </LinearLayout>
+
+</LinearLayout>
