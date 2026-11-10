@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- LAYOUT TYPE: ScrollView with GridLayout and LinearLayout controls -->
+<!-- LECTURE TOPIC: GridLayout & Cloud Firestore Add Data -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/background">
+
+    <!-- Modern Header Bar -->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="64dp"
+        android:background="@color/primary"
+        android:paddingHorizontal="16dp">
+
+        <ImageButton
+            android:id="@+id/btn_log_outage_back"
+            android:layout_width="44dp"
+            android:layout_height="44dp"
+            android:layout_centerVertical="true"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:src="@drawable/ic_arrow_back"
+            android:contentDescription="Back" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toEndOf="@id/btn_log_outage_back"
+            android:layout_marginStart="12dp"
+            android:text="Log Outage"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+    </RelativeLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="20dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Record Substation Incident"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:textColor="@color/textPrimary" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Creates structured documents in Cloud Firestore ('outage_history')"
+                android:textSize="12sp"
+                android:textColor="@color/textSecondary"
+                android:layout_marginTop="2dp"
+                android:layout_marginBottom="20dp" />
+
+            <!-- Area Input -->
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.LoadShedding.TextInputLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Area / District"
+                app:startIconDrawable="@drawable/ic_location_pin"
+                android:layout_marginBottom="16dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_log_area"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Khulna"
+                    android:textColor="@color/textPrimary"
+                    android:inputType="textCapWords" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- Start & End Times Row -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginBottom="16dp">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.LoadShedding.TextInputLayout"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:hint="Start Time"
+                    android:layout_marginEnd="6dp">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/et_log_start_time"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="02:00 PM"
+                        android:textColor="@color/textPrimary" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.LoadShedding.TextInputLayout"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:hint="End Time"
+                    android:layout_marginStart="6dp">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/et_log_end_time"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="03:30 PM"
+                        android:textColor="@color/textPrimary" />
+                </com.google.android.material.textfield.TextInputLayout>
+            </LinearLayout>
+
+            <!-- LECTURE TOPIC: GridLayout (Quick duration selection buttons in a 2x2 grid) -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="QUICK DURATION PRESETS (GRIDLAYOUT DEMO)"
+                android:textStyle="bold"
+                android:textColor="@color/textSecondary"
+                android:letterSpacing="0.05"
+                android:textSize="11sp"
+                android:layout_marginBottom="8dp"
+                android:layout_marginStart="4dp" />
+
+            <GridLayout
+                android:id="@+id/grid_duration_presets"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:columnCount="2"
+                android:rowCount="2"
+                android:layout_marginBottom="16dp">
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btn_duration_30"
+                    style="@style/Widget.LoadShedding.Button.Secondary"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    android:layout_margin="4dp"
+                    android:text="30 Minutes" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btn_duration_60"
+                    style="@style/Widget.LoadShedding.Button.Secondary"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    android:layout_margin="4dp"
+                    android:text="60 Minutes" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btn_duration_90"
+                    style="@style/Widget.LoadShedding.Button.Secondary"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    android:layout_margin="4dp"
+                    android:text="90 Minutes" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btn_duration_120"
+                    style="@style/Widget.LoadShedding.Button.Secondary"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    android:layout_margin="4dp"
+                    android:text="120 Minutes" />
+            </GridLayout>
+
+            <!-- Duration Field -->
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.LoadShedding.TextInputLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Duration in Minutes"
+                android:layout_marginBottom="16dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_log_duration"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="90"
+                    android:inputType="number"
+                    android:textColor="@color/textPrimary" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- Notes Field -->
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.LoadShedding.TextInputLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Substation / Feeder Notes"
+                android:layout_marginBottom="24dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_log_notes"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="top|start"
+                    android:lines="3"
+                    android:inputType="textMultiLine"
+                    android:text="Midday peak demand rotation cut on Boyra feeder."
+                    android:textColor="@color/textPrimary" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- Progress Indicator -->
+            <ProgressBar
+                android:id="@+id/pb_log_outage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:visibility="gone"
+                android:indeterminateTint="@color/primary"
+                android:layout_marginBottom="16dp" />
+
+            <!-- Save Button -->
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_save_firestore_outage"
+                style="@style/Widget.LoadShedding.Button.Primary"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Save Outage to Firestore"
+                android:layout_marginBottom="24dp" />
+
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

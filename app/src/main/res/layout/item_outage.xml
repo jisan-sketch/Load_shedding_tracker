@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- LAYOUT TYPE: MaterialCardView with vertical layout and structured meta fields -->
+<!-- LECTURE TOPIC: RecyclerView ViewHolder Item Layout -->
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="6dp"
+    app:cardCornerRadius="18dp"
+    app:cardElevation="2dp"
+    app:strokeWidth="1dp"
+    app:strokeColor="@color/divider"
+    app:cardBackgroundColor="@color/surface">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:id="@+id/tv_outage_area"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Khulna Outage"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:textColor="@color/textPrimary" />
+
+            <TextView
+                android:id="@+id/tv_outage_duration"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="60 min"
+                android:textSize="12sp"
+                android:textStyle="bold"
+                android:textColor="@color/primary"
+                android:background="@drawable/bg_circle_icon_blue"
+                android:paddingHorizontal="10dp"
+                android:paddingVertical="4dp" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tv_outage_times"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Time: 02:00 PM – 03:00 PM"
+            android:textSize="13sp"
+            android:textColor="@color/textSecondary"
+            android:layout_marginTop="6dp" />
+
+        <TextView
+            android:id="@+id/tv_outage_notes"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Notes: Grid maintenance at regional substation."
+            android:textSize="13sp"
+            android:textColor="@color/textPrimary"
+            android:layout_marginTop="4dp" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/divider"
+            android:layout_marginTop="12dp"
+            android:layout_marginBottom="8dp" />
+
+        <TextView
+            android:id="@+id/tv_outage_reporter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Logged by operator"
+            android:textSize="11sp"
+            android:textColor="@color/textSecondary" />
+
+    </LinearLayout>
+
+</com.google.android.material.card.MaterialCardView>

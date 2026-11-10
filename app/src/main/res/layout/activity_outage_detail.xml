@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- LAYOUT TYPE: RelativeLayout (Detail screen demonstrating reading Intent extras and edit/delete actions) -->
+<!-- LECTURE TOPIC: Explicit Intent Extras, Firestore/RTDB Update and Delete, and ACTION_SEND -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/background">
+
+    <!-- Modern Header Bar -->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="64dp"
+        android:background="@color/primary"
+        android:paddingHorizontal="16dp">
+
+        <ImageButton
+            android:id="@+id/btn_detail_back"
+            android:layout_width="44dp"
+            android:layout_height="44dp"
+            android:layout_centerVertical="true"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:src="@drawable/ic_arrow_back"
+            android:contentDescription="Back" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toEndOf="@id/btn_detail_back"
+            android:layout_marginStart="12dp"
+            android:text="Incident Details"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+    </RelativeLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="16dp">
+
+            <TextView
+                android:id="@+id/tv_detail_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:text="Power Outage Record"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:textColor="@color/textPrimary" />
+
+            <TextView
+                android:id="@+id/tv_detail_source"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_detail_title"
+                android:layout_alignParentStart="true"
+                android:text="Data Source: Cloud Firestore / Realtime DB"
+                android:textSize="12sp"
+                android:textColor="@color/textSecondary"
+                android:layout_marginTop="2dp" />
+
+            <!-- Details Card -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/card_detail_info"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_detail_source"
+                android:layout_marginTop="14dp"
+                app:cardCornerRadius="20dp"
+                app:cardElevation="2dp"
+                app:strokeWidth="1dp"
+                app:strokeColor="@color/divider"
+                app:cardBackgroundColor="@color/surface">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="20dp">
+
+                    <TextView
+                        android:id="@+id/lbl_detail_area"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="DISTRICT &amp; ZONE"
+                        android:textStyle="bold"
+                        android:textColor="@color/textSecondary"
+                        android:letterSpacing="0.05"
+                        android:textSize="11sp" />
+
+                    <TextView
+                        android:id="@+id/tv_detail_area"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Khulna Outage"
+                        android:textSize="20sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/textPrimary"
+                        android:layout_marginTop="2dp" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/divider"
+                        android:layout_marginVertical="12dp" />
+
+                    <TextView
+                        android:id="@+id/lbl_detail_times"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="OUTAGE WINDOW &amp; DURATION"
+                        android:textStyle="bold"
+                        android:textColor="@color/textSecondary"
+                        android:letterSpacing="0.05"
+                        android:textSize="11sp" />
+
+                    <TextView
+                        android:id="@+id/tv_detail_times"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="10:00 AM – 11:30 AM (90 mins)"
+                        android:textSize="15sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/accent"
+                        android:layout_marginTop="2dp" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/divider"
+                        android:layout_marginVertical="12dp" />
+
+                    <TextView
+                        android:id="@+id/lbl_detail_notes"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="OPERATOR NOTES &amp; CAUSE"
+                        android:textStyle="bold"
+                        android:textColor="@color/textSecondary"
+                        android:letterSpacing="0.05"
+                        android:textSize="11sp" />
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        style="@style/Widget.LoadShedding.TextInputLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="6dp">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/et_detail_notes"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="textMultiLine"
+                            android:minLines="2"
+                            android:text="Feeder rotating outage scheduled by WZPDCL."
+                            android:textSize="14sp"
+                            android:textColor="@color/textPrimary" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <TextView
+                        android:id="@+id/tv_detail_reporter"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Reporter: user@example.com"
+                        android:textSize="12sp"
+                        android:textColor="@color/textSecondary"
+                        android:layout_marginTop="12dp" />
+
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- Action Buttons: Strictly the 3 design system styles -->
+            <!-- Update Document Button (Primary) -->
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_detail_update"
+                style="@style/Widget.LoadShedding.Button.Primary"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/card_detail_info"
+                android:layout_marginTop="20dp"
+                android:text="Update Notes in Database" />
+
+            <!-- Delete Document Button (Danger) -->
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_detail_delete"
+                style="@style/Widget.LoadShedding.Button.Danger"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/btn_detail_update"
+                android:layout_marginTop="10dp"
+                android:text="Delete This Record" />
+
+            <!-- Share Outage Info (Secondary) -->
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_detail_share"
+                style="@style/Widget.LoadShedding.Button.Secondary"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/btn_detail_delete"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="24dp"
+                android:text="Share Outage Alert" />
+
+        </RelativeLayout>
+    </ScrollView>
+
+</LinearLayout>
